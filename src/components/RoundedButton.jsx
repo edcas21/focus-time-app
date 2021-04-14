@@ -5,17 +5,21 @@ import {
   StyleSheet,
   ViewPropTypes,
 } from "react-native";
+import { colors } from '../utils/colors';
 
 // Stateless function that takes in props from another class
 export const RoundedButton = ({
-  style: {},
-  textStyle: {},
+  style = {},
+  textStyle = {},
   size = 125,
   ...props
 }) => {
   return (
-    <TouchableOpacity style={[styles(size).radius, style]}>
-      <Text style={[styles.text, textStyle]}>{props.title}</Text>
+    <TouchableOpacity
+      style={[styles(size).radius, style]}
+      onPress={props.onPress}
+    >
+      <Text style={[styles(size).text, textStyle]}>{props.title}</Text>
     </TouchableOpacity>
   );
 };
@@ -27,11 +31,12 @@ const styles = (size) =>
       width: size,
       height: size,
       alignItems: "center",
-      borderColor: "#fff",
+      justifyContent: "center",
+      borderColor: colors.white,
       borderWidth: 2,
     },
     text: {
-      color: "#fff",
+      color: colors.white,
       fontSize: size / 3,
     },
   });
