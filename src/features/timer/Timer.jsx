@@ -9,6 +9,7 @@ import { spacing } from "../../utils/sizes";
 import { Countdown } from "../../components/Countdown";
 import { RoundedButton } from "../../components/RoundedButton";
 import { Timing } from "./Timing";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const DEFAULT_TIME = 0.1;
 export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
@@ -56,7 +57,7 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
         />
       </View>
       <View style={{ paddingTop: spacing.xxl }}>
-        <Text style={styles.title}>We are focusing on:</Text>
+        <Text style={styles.title}>You are focusing on:</Text>
         <Text style={styles.task}>{focusSubject}</Text>
       </View>
       <ProgressBar
@@ -69,16 +70,25 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
       </View>
       <View style={styles.buttonWrapper}>
         {!isStarted ? (
-          <RoundedButton title="start" onPress={() => setIsStarted(true)} />
+          <RoundedButton
+            title="start"
+            color={colors.green}
+            onPress={() => setIsStarted(true)}
+          />
         ) : (
-          <RoundedButton title="pause" onPress={() => setIsStarted(false)} />
+          <RoundedButton
+            title="pause"
+            color={colors.yellow}
+            onPress={() => setIsStarted(false)}
+          />
         )}
       </View>
       <View style={styles.clearSubject}>
         <RoundedButton
-          title="X"
-          size={50}
-          textSize={20}
+          title="×"
+          size={60}
+          textSize={45}
+          color={colors.red}
           onPress={() => clearSubject()}
         />
       </View>
