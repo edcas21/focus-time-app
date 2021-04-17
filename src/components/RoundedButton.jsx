@@ -12,6 +12,7 @@ export const RoundedButton = ({
   style = {},
   textStyle = {},
   size = 125,
+  textSize = 0,
   ...props
 }) => {
   return (
@@ -19,12 +20,12 @@ export const RoundedButton = ({
       style={[styles(size).radius, style]}
       onPress={props.onPress}
     >
-      <Text style={[styles(size).text, textStyle]}>{props.title}</Text>
+      <Text style={[styles(size, textSize).text, textStyle]}>{props.title}</Text>
     </TouchableOpacity>
   );
 };
 
-const styles = (size) =>
+const styles = (size, textSize=0) =>
   StyleSheet.create({
     radius: {
       borderRadius: size / 2,
@@ -33,10 +34,11 @@ const styles = (size) =>
       alignItems: "center",
       justifyContent: "center",
       borderColor: colors.white,
-      borderWidth: 2,
+      borderWidth: 5.5,
     },
     text: {
       color: colors.white,
-      fontSize: size / 3,
+      fontSize: textSize ? textSize : size / 4.5,
+      fontWeight: 'bold'
     },
   });
